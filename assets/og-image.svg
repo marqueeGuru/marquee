@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Marquee Open Graph card placeholder">
+  <rect width="1200" height="630" fill="#f7f5f0"/>
+  <rect x="40" y="40" width="1120" height="550" fill="none" stroke="#1a1a1a" stroke-width="2"/>
+  <text x="80" y="180" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, monospace"
+        font-size="28" fill="#a14b1f">marquee — open-source</text>
+  <text x="80" y="320" font-family="Georgia, 'Times New Roman', serif"
+        font-size="84" font-weight="700" fill="#1a1a1a">An emulator for</text>
+  <text x="80" y="420" font-family="Georgia, 'Times New Roman', serif"
+        font-size="84" font-weight="700" fill="#1a1a1a">mechanical manufacturability.</text>
+  <text x="80" y="540" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, monospace"
+        font-size="22" fill="#555">first instantiation: open lathe</text>
+</svg>

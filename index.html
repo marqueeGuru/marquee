@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Marquee — an open-source emulator for mechanical manufacturability</title>
+  <meta name="description" content="Marquee is an open-source emulator for mechanical manufacturability. Open Lathe is its first concrete instantiation — community-driven on both the emulator software and the lathe hardware.">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Marquee — an open-source emulator for mechanical manufacturability">
+  <meta property="og:description" content="A feasibility gate upstream of CAM. First instantiation: Open Lathe.">
+  <meta property="og:image" content="assets/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Marquee — an open-source emulator for mechanical manufacturability">
+  <meta name="twitter:description" content="A feasibility gate upstream of CAM. First instantiation: Open Lathe.">
+  <meta name="twitter:image" content="assets/og-image.svg">
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+
+<nav class="nav" aria-label="Primary">
+  <div class="nav-inner">
+    <a href="#top" class="nav-brand">marquee</a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links">menu</button>
+    <ul id="nav-links" class="nav-links">
+      <li><a href="#problem">Problem</a></li>
+      <li><a href="#vision">Vision</a></li>
+      <li><a href="#open-lathe">Open Lathe</a></li>
+      <li><a href="#status">Now</a></li>
+      <li><a href="#roadmap">Roadmap</a></li>
+      <li><a href="#involved">Get involved</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header id="top" class="hero">
+  <div class="wrap">
+    <img class="hero-logo" src="assets/logo-placeholder.svg" alt="Marquee logo (placeholder)">
+    <p class="eyebrow">Marquee · open source</p>
+    <h1>An emulator for mechanical manufacturability.</h1>
+    <p class="lede">
+      Marquee is an open-source emulator that asks, before you cut metal, <em>can this part be made — and if so, how?</em>
+      Its first concrete instantiation is <strong>Open Lathe</strong>: a community-driven project scoped to lathe machining,
+      built openly on both fronts — the emulator software, and the lathe itself.
+    </p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="https://github.com/marquee-guru/marquee/discussions">Join the discussion →</a>
+      <a class="btn" href="#open-lathe">What is Open Lathe?</a>
+    </div>
+  </div>
+</header>
+
+<section id="problem">
+  <div class="wrap">
+    <p class="section-eyebrow">01 · The problem</p>
+    <h2>Mechanical design has no fast feedback loop.</h2>
+    <p>
+      In chip design, logic is emulated long before silicon is fabricated. Errors surface in software, not in a fab run.
+      That single move — emulation upstream of manufacturing — compresses the iteration cycle from months to minutes,
+      which is most of the reason a designer can try a hundred ideas a week.
+    </p>
+    <p>
+      Mechanical design has no equivalent layer. To learn whether a part is manufacturable, you usually build it.
+      Prototypes take weeks; failures are discovered late; teams default to <em>something that works well enough</em>
+      rather than exploring something genuinely new. As one of the project's drafts puts it:
+    </p>
+    <p class="aside">
+      It is generally harder to think of something completely new when it is hard to make a new version of something that is already used.
+    </p>
+    <p>
+      The chip-design analogy isn't perfect — bits aren't atoms, and machining isn't lithography. But the structural gap
+      is real: somewhere upstream of CAM, between <em>I have a shape</em> and <em>I have a process plan</em>, there should
+      be a fast, honest answer about what's actually buildable.
+    </p>
+  </div>
+</section>
+
+<section id="vision">
+  <div class="wrap">
+    <p class="section-eyebrow">02 · The vision</p>
+    <h2>Marquee — an emulator for what's manufacturable.</h2>
+    <p>
+      Marquee is the open-source layer that fills that gap. Given a target geometry and a description of available
+      machines and tools, it produces a manufacturability verdict and, when feasible, a proposed process sequence.
+      It is not a replacement for CAM — it is a feasibility gate <em>upstream</em> of CAM, where iteration is cheap.
+    </p>
+    <p>
+      The platform is built so its value compounds with contribution. Each new machine model, tool definition,
+      material profile, or process rule that the community adds widens the set of designs Marquee can reason about.
+      Mechanical design becomes more like software: composable, inspectable, shareable.
+    </p>
+  </div>
+</section>
+
+<section id="open-lathe">
+  <div class="wrap">
+    <p class="section-eyebrow">03 · First instantiation</p>
+    <h2>Open Lathe.</h2>
+    <p>
+      Open Lathe is the first concrete instantiation of Marquee, scoped to lathe machining. It is community-driven
+      on two fronts at once:
+    </p>
+    <ul class="clean">
+      <li><strong>The emulator software</strong> — a manufacturability engine for turned parts, openly developed.</li>
+      <li><strong>The physical lathe</strong> — the machine itself and its components, designed in the open.</li>
+    </ul>
+    <p>
+      The end goal is back-to-back design between the two: a physical machine whose envelope is precisely understood
+      by an agentic system that performs manufacturability analysis and supports part design. The same primitives that
+      describe what the lathe <em>can</em> do are the primitives a designer queries when sketching a part.
+    </p>
+  </div>
+</section>
+
+<section id="status">
+  <div class="wrap">
+    <p class="section-eyebrow">04 · Where I am now</p>
+    <h2>Current scope.</h2>
+    <p>
+      The first milestone targets a single idealized lathe with three turning-tool archetypes —
+      <em>shaping/sculpting</em>, <em>detail/fillet</em>, and <em>parting/cutoff</em> — grounded in
+      <code>ISO 1832:2017</code> turning insert nomenclature, with axisymmetric STEP geometry as input
+      and a manufacturability verdict plus process sequence as output.
+    </p>
+    <p>
+      <strong>Geometric scope only.</strong> Material properties, cutting forces, surface finish, and tolerances
+      are explicitly out of this version — they are roadmap items, not silent omissions.
+    </p>
+    <div class="callout">
+      <p><strong>Honest status, today.</strong></p>
+      <p>
+        What's built is a geometric kernel and the primitives the rest will sit on:
+        <code>Segment</code>, <code>Shape</code>, and <code>Path</code> classes; line/arc intersection; closed-region
+        construction with self-intersection checks; boolean material removal; and a <code>TurningInsert</code> model
+        that splits an insert's footprint into a green (cutting) zone and a red (collision) zone for a given lead angle.
+        Two standard inserts (<code>CNMG 120408</code> and <code>VBMT 160404</code>) are modeled.
+      </p>
+      <p>
+        What's <em>not yet</em> built — and what the first milestone is aimed at — is the STEP loader, the three-tool
+        archetype dataset, the manufacturability verdict, the process-sequence generator, and the agentic system
+        trained on a synthesized dataset of manufacturable shapes. The architecture for that last piece is open.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="roadmap">
+  <div class="wrap">
+    <p class="section-eyebrow">05 · Roadmap</p>
+    <h2>Direction, not deadlines.</h2>
+    <p>
+      The milestones below are ordered by where they sit in the dependency graph, not by promised dates.
+      Each one is a place where the project welcomes contribution.
+    </p>
+    <ol class="roadmap">
+      <li><span class="step">M1</span><span class="body">Idealized lathe — STEP input, three-tool archetypes, verdict + process sequence.</span></li>
+      <li><span class="step">M2</span><span class="body">Tolerances and surface finish — moving past pure geometry.</span></li>
+      <li><span class="step">M3</span><span class="body">Expanded tool dataset — beyond the three archetypes, drawing on community-supplied tools.</span></li>
+      <li><span class="step">M4</span><span class="body">Material-aware analysis — forces, deflection, machinability.</span></li>
+      <li><span class="step">M5</span><span class="body">Other machines — milling, grinding, EDM.</span></li>
+      <li><span class="step">M6</span><span class="body">Broader Marquee — emulation modules beyond lathes, composed as a platform.</span></li>
+    </ol>
+  </div>
+</section>
+
+<section id="involved">
+  <div class="wrap">
+    <p class="section-eyebrow">06 · Get involved</p>
+    <h2>The most useful thing right now is conversation.</h2>
+    <p>
+      The project is early. There is a lot more value in shaping the questions than in shipping code, and three
+      channels exist depending on how concrete your input is.
+    </p>
+    <div class="tiers">
+      <div class="tier">
+        <p class="tier-meta">Open · no approval</p>
+        <h3>GitHub Discussions</h3>
+        <p>For open-ended questions, ideas, prior art, and pushback. Start here.</p>
+        <a class="btn btn-primary" href="https://github.com/marquee-guru/marquee/discussions">Open Discussions →</a>
+      </div>
+      <div class="tier">
+        <p class="tier-meta">Concrete · proposals &amp; bugs</p>
+        <h3>GitHub Issues</h3>
+        <p>For specific proposals and reproducible bugs. Use the templates — they're short.</p>
+        <a class="btn" href="https://github.com/marquee-guru/marquee/issues">Open Issues →</a>
+      </div>
+      <div class="tier is-soon">
+        <p class="tier-meta">Curated · join-request</p>
+        <h3>Telegram backchannel</h3>
+        <p>For sustained conversation with the maintainer and core contributors. Joining soon — link will land here.</p>
+        <a class="btn" href="#" aria-disabled="true">Joining soon</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <h2 id="about">About</h2>
+    <p>
+      Marquee began as a Master's research project on simulation-driven manufacturability for lathe machining,
+      and is being opened up early because the most interesting questions — what to model, what to leave out,
+      what the platform should look like — are better answered with more people in the room.
+    </p>
+    <p>
+      Maintained by <a href="https://github.com/">Roman Yukhananov</a>. Reach out via Discussions, or by email
+      (placeholder — to be added).
+    </p>
+    <div class="meta">
+      <span>MIT licensed</span>
+      <span>·</span>
+      <span><a href="https://github.com/marquee-guru/marquee">Source on GitHub</a></span>
+      <span>·</span>
+      <span>© 2026</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/main.js" defer></script>
+</body>
+</html>
